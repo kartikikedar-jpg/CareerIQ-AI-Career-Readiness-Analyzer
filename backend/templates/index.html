@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AI Career Readiness Analyzer</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f4f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #263b80;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .container {
+            background: white;
+            width: 70%;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #263b80;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        button {
+            background: #263b80;
+            color: white;
+            padding: 14px 25px;
+            border: none;
+            border-radius: 6px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #4059ad;
+        }
+
+        .note {
+            color: #666;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>AI Career Readiness Analyzer</h1>
+        <p>Analyze Your Skills. Build Your Future.</p>
+    </header>
+
+    <div class="container">
+
+        <h2>Career Analysis</h2>
+
+        <p>
+            Upload your resume and enter your target
+            job description to begin your career analysis.
+        </p>
+
+        <form method="POST" enctype="multipart/form-data">
+
+            <label>Upload Your Resume</label>
+
+            <input
+                type="file"
+                name="resume"
+                accept=".pdf,.docx"
+                required
+            >
+
+            <p class="note">
+                Accepted formats: PDF and DOCX. Maximum size: 5 MB.
+            </p>
+
+            <label>Target Job Description</label>
+
+            <textarea
+                name="job_description"
+                placeholder="Paste your target job description here..."
+            ></textarea>
+
+            <button type="submit">
+                Upload Resume
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

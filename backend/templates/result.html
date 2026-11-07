@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Career Analysis Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f4f8;
+            padding: 30px;
+        }
+
+        .container {
+            background: white;
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        h1, h2 {
+            color: #263b80;
+        }
+
+        .score {
+            font-size: 32px;
+            font-weight: bold;
+            color: #263b80;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Career Readiness Analysis</h1>
+
+    <h2>Resume Match Score</h2>
+    <p class="score">{{ match_percentage }}%</p>
+
+    <h2>Skills Found in Your Resume</h2>
+    {% if detected_skills %}
+        <ul>
+            {% for skill in detected_skills %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No skills detected.</p>
+    {% endif %}
+
+    <h2>Required Job Skills</h2>
+    {% if required_skills %}
+        <ul>
+            {% for skill in required_skills %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No recognized skills found in the job description.</p>
+    {% endif %}
+
+    <h2>Missing Skills</h2>
+    {% if missing_skills %}
+        <ul>
+            {% for skill in missing_skills %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No missing skills found in our current skill list!</p>
+    {% endif %}
+
+    <h2>Recommended Courses</h2>
+
+{% if recommendations %}
+    <ul>
+        {% for course in recommendations %}
+            <li>{{ course }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Great! No course recommendations needed.</p>
+{% endif %}
+
+    <h2>Extracted Resume Text</h2>
+    <pre>{{ resume_text }}</pre>
+
+    <a href="/">Analyze Another Resume</a>
+
+</div>
+
+</body>
+</html>
