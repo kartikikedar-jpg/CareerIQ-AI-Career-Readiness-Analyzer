@@ -57,3 +57,17 @@ To help students identify skill gaps, explore learning resources, and improve th
 ---
 
 Developed as a BCA Academic Project.
+
+## 📸 Project Screenshots
+
+![Homepage](screenshots/homepage.png)
+
+![Dashboard 1](screenshots/Screenshot%202026-11-09%20130405.png)
+
+![Dashboard 2](screenshots/Screenshot%202026-11-09%20130452.png)
+
+![Dashboard 3](screenshots/Screenshot%202026-11-09%20130512.png)
+
+![Dashboard 4](screenshots/Screenshot%202026-11-09%20130555.png)
+
+![Dashboard 5](screenshots/Screenshot%202026-11-09%20130619.png)
