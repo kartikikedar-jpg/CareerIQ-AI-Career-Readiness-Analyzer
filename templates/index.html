@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerIQ | AI Career Readiness Analyzer</title>
+
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #F4F0E6;
+            margin: 0;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background:
+                linear-gradient(rgba(244,240,230,.58), rgba(244,240,230,.58)),
+                url("/static/images/adypu-campus.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+
+        header {
+            background: #0c7a96;
+            color: white;
+            text-align: center;
+            padding: 25px 150px;
+            position: relative;
+            min-height: 125px;
+        }
+
+        .college-logo {
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 105px;
+            height: 75px;
+            object-fit: contain;
+            background: white;
+            padding: 5px;
+            border-radius: 8px;
+        }
+
+        header h1 { margin: 5px 0 10px; }
+        header p { margin: 0 0 5px; }
+
+        .userbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            width: 70%;
+            margin: 20px auto 0;
+            color: #24434a;
+        }
+
+        .userbar a {
+            color: #0c7a96;
+            font-weight: bold;
+            text-decoration: none;
+            margin-left: 12px;
+        }
+
+        .container {
+            background: rgba(255,250,240,.97);
+            width: 70%;
+            margin: 18px auto 40px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.15);
+        }
+
+        h2 { color: #0c7a96; }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        textarea { height: 150px; resize: vertical; }
+
+        button {
+            background: #0c7a96;
+            color: white;
+            padding: 14px 25px;
+            border: none;
+            border-radius: 6px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover { background: #095d73; }
+
+        .note { color: #666; font-size: 13px; }
+
+        .error {
+            background: #ffe8e5;
+            color: #a83225;
+            padding: 12px;
+            border-radius: 7px;
+        }
+
+        @media (max-width: 650px) {
+            header { padding: 100px 15px 20px; }
+
+            .college-logo {
+                width: 80px;
+                height: 65px;
+                top: 12px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .container, .userbar {
+                width: 90%;
+            }
+
+            .container { padding: 20px; }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img
+            src="/static/images/seamedu-logo.png"
+            alt="SEAMEDU Logo"
+            class="college-logo"
+        >
+
+        <h1>CareerIQ</h1>
+        <p>AI Career Readiness & Skill Gap Analyzer</p>
+        <p>Analyze Your Skills. Build Your Future.</p>
+    </header>
+
+    <div class="userbar">
+        <span>Welcome, <strong>{{ session.get('student_name', 'Student') }}</strong></span>
+        <span>
+            <a href="{{ url_for('student_logout') }}">Logout</a>
+        </span>
+    </div>
+
+    <div class="container">
+        <h2>Career Analysis</h2>
+
+        <p>
+            Upload your resume and enter your target job description
+            to begin your career analysis.
+        </p>
+
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" enctype="multipart/form-data">
+            <label>Upload Your Resume</label>
+
+            <input
+                type="file"
+                name="resume"
+                accept=".pdf,.docx"
+                required
+            >
+
+            <p class="note">
+                Accepted formats: PDF and DOCX.
+                Maximum size: 5 MB.
+            </p>
+
+            <label>Target Job Description</label>
+
+            <textarea
+                name="job_description"
+                placeholder="Paste your target job description here..."
+                required
+            ></textarea>
+
+            <button type="submit">Analyze My Resume</button>
+        </form>
+    </div>
+</body>
+</html>
